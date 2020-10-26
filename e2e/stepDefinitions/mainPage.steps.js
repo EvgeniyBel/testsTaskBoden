@@ -2,7 +2,6 @@ let {Given, When, Then, Before, AfterAll, After} = require('cucumber');
 const MainPage = require("../pages/mainPage").default;
 const Helpers = require("../helpers/helpers").default;
 
-
 Given(/^Go to applications (.*)$/, {timeout: 60000}, async function (url) {
         await MainPage.goToMainPage(url);
 });

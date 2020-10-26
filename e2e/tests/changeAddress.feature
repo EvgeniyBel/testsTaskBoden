@@ -1,5 +1,4 @@
 @editAddress
-@clearCache
 Feature: Change default Address
   
   Background: Go to application and Log in

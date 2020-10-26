@@ -19,6 +19,8 @@ class MainPage {
         this.searchButton = element(by.css(`.toggle-button-search-panel button`));
         this.searchField = element(by.css(`#searchInput`));
         this.acceptCookiesButton = element(by.css(`button#onetrust-accept-btn-handler`));
+        this.oneTrustPolicy = element(by.id(`onetrust-policy`));
+        this.manageCokiesButton = element(by.id(`onetrust-pc-btn-handler`));
     }
 
     async goToMainPage(url) {
@@ -60,6 +62,8 @@ class MainPage {
     }
 
     async acceptCookies() {
+        await Expectations.waitUntilIsVisible(this.oneTrustPolicy);
+        await Expectations.waitUntilIsVisible(this.manageCokiesButton);
         await Expectations.waitUntilIsClickable(this.acceptCookiesButton);
         await Buttons.clickButtonByElement(this.acceptCookiesButton);
     }

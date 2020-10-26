@@ -30,8 +30,13 @@ exports.config = {
                 "--disable-web-security",
                 "--allow-running-insecure-content",
                 "--allow-cross-origin-auth-prompt",
+                'disable-infobars=true',
+                '--disable-popup-blocking'
                 //"--headless",
             ],
+            'prefs': {
+                'credentials_enable_service': false
+            }
         },
     },
 

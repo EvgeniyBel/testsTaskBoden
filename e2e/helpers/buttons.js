@@ -1,4 +1,4 @@
-const {element, by} = require("protractor");
+const {browser, element, by} = require("protractor");
 const Expectations = require("../helpers/expectations").default;
 
 class Buttons {

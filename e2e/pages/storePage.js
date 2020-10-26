@@ -39,10 +39,9 @@ class StorePage {
 
     async addFilterByName(filterName, filter) {
         await Helpers.scrollToElement(await this.returnFilterTypeByName(filterName));
-        await Expectations.waitUntilIsClickable(await this.returnFilterTypeByName(filterName));
         await Buttons.clickButtonByElement(await this.returnFilterTypeByName(filterName));
-        await Expectations.waitUntilIsClickable(await this.returnFilterByName(filter));
         await Buttons.clickButtonByElement(await this.returnFilterByName(filter));
+        await Buttons.clickButtonByElement(await this.returnFilterTypeByName(filterName));
         await browser.sleep(1000);
     }
 
