@@ -8,16 +8,22 @@ const Input = require("../helpers/input").default;
 class SearchPage {
     constructor() {
         this.womenFilterButton = element(by.css(`#primaryFilter_departmentWomen`));
-        this.returnFilterByName = async (filter) => {
+        this.returnFilterByName = (filter) => {
             return element(by.xpath(`//*[@id='productGridPrimaryFilterPortal']//span[contains(text(),'${filter}')]/ancestor::button`));
         };
+        this.returnLinkByName = (filter) => {
+            return element(by.xpath(`//*[@id='productGridPrimaryFilterPortal']//span[contains(text(),'${filter}')]/ancestor::li`));
+        };
         this.searchResult = element(by.css(`.has-results-notification`));
+        this.filterPortal = element(by.css(`#productGridPrimaryFilterPortal`));
+        this.productGrid = element(by.id(`productGrid`));
     }
 
-    async addFilterByName(filter) {
+    async addSearchFilterByName(filter) {
         await browser.waitForAngularEnabled(false);
-        await Expectations.waitUntilIsVisible(await this.returnFilterByName(filter));
-        await Buttons.clickButtonByElement(await this.returnFilterByName(filter));
+        await Expectations.waitUntilIsVisible(this.productGrid);
+        await Expectations.waitUntilIsVisible(this.filterPortal);
+        await Buttons.clickButtonByElement(this.returnLinkByName(filter));
     }
 
     async addFilterWomen() {

@@ -1,4 +1,3 @@
-@clearCache
 Feature: Using filters
 
   Background:

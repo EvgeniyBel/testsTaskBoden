@@ -2,8 +2,8 @@ let {Given, When, Then} = require('cucumber');
 const SearchPage = require('../pages/searchPage').default;
 const {expect} = require("chai");
 
-When(/^I add filter (.*)$/, {timeout: 45000}, async function(filter) {
-    await SearchPage.addFilterByName(filter);
+When(/^I add (.*) filter$/,{timeout: 5000 * 6}, async function(filter) {
+    await SearchPage.addSearchFilterByName(filter);
 });
 
 Then(/^Filter (.*) is not active$/,{timeout: 30000}, async function(filter) {

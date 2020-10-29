@@ -5,8 +5,8 @@ Feature: Check search functionality
     Given Go to applications https://www.boden.co.uk
 
   Scenario: Enter a search for "stripy leggings", filtered by women
-    When I search stripy leggings
-    And I add filter Women
+    Given I search stripy leggings
+    When I add Women filter
     Then Filter Women is active
     And Filter All is not active
     And Filter Girls is not active

@@ -1,4 +1,3 @@
-
 exports.config = {
     allScriptsTimeout: 1800000,
     framework: 'custom',
@@ -6,14 +5,11 @@ exports.config = {
     baseUrl: "https://www.boden.co.uk/",
     getPageTimeout: 45000,
     directConnect: true,
+    SELENIUM_PROMISE_MANAGER: false,
 
     specs: [
         'e2e/tests/*.feature'
     ],
-
-    onPrepare: function () {
-        browser.manage().window().maximize();
-    },
 
     capabilities: {
         browserName: "chrome",
@@ -21,28 +17,13 @@ exports.config = {
         shardTestFiles: false,
         maxInstances: 1,
         chromeOptions: {
+            w3c: false,
             args: [
-                "--no-sandbox",
-                "--test-type=browser",
-                "--disable-infobars",
-                "--disable-extensions",
-                "verbose",
-                "log-path=/tmp/chromedriver.log",
-                "--disable-web-security",
-                "--allow-running-insecure-content",
-                "--allow-cross-origin-auth-prompt",
-                'disable-infobars=true',
-                '--disable-popup-blocking',
-                //"--headless",
+                "--headless",
+                "no-sandbox",
+                "--disable-gpu",
+                "--window-size=1920,1080"
             ],
-            'prefs': {
-                'credentials_enable_service': false
-            },
-            localState: {
-                'browser': {
-                    'enabled_labs_experiments': ['cookies-without-same-site-must-be-secure@2']
-                }
-            }
         },
     },
 

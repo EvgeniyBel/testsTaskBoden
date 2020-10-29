@@ -51,7 +51,6 @@ class MainPage {
         await browser.waitForAngularEnabled(false);
         await Buttons.clickButtonByElement(this.searchButton);
         await Input.inputTextInField(this.searchField, name);
-        await browser.sleep(1000);
         await Helpers.pressEnter();
     }
 

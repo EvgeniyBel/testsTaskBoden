@@ -10,7 +10,7 @@ Given(/^Go to (.*) menu item (.*) section$/, {timeout: 30000}, async function(me
         await MainPage.goStoreSection(menuItem, menuSubItem);
 });
 
-When(/^I search (.*)$/, {timeout:30000}, async function(name) {
+Given(/^I search (.*)$/, {timeout:30000}, async function(name) {
         await MainPage.searchItem(name);
 });
 
