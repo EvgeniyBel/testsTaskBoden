@@ -22,30 +22,42 @@ class StorePage {
         this.returnFilterByName = (filter) => {
             return element(by.xpath(`//*[@class='product-option-value' and contains(text(),'${filter}')]/ancestor::button`))
         };
+        this.fitButton = (fit) => {
+            return element(by.xpath(`//*[text()='${fit}']/ancestor::button`))
+        }
      }
 
     async selectFirstItemToBasket() {
+        await browser.waitForAngularEnabled(false);
         await Helpers.scrollToElement(this.storeItems.get(0));
         await Links.clickLinkByElement(this.productItemLinks.get(0));
-        await Buttons.clickButtonByElement(this.selectSizeButtons.get(0));
+        await Expectations.waitUntilIsVisible(this.selectSizeButtons.get(0));
+        if(await this.fitButton('Petite').isPresent()) {
+            await Buttons.clickButtonByElement(await this.fitButton('Petite'));
+            await Buttons.clickButtonByElement(this.selectSizeButtons.get(3));
+        } else {
+            await Buttons.clickButtonByElement(this.selectSizeButtons.get(0));
+        }
         await Helpers.scrollToElement(this.addToBagButton);
         await Expectations.waitUntilIsClickable(this.addToBagButton);
         await Buttons.clickButtonByElement(this.addToBagButton);
     }
 
     async openMiniBasket() {
+        await browser.waitForAngularEnabled(false);
         await Buttons.clickButtonByElement(this.miniBasketButton);
     }
 
     async addFilterByName(filterName, filter) {
+        await browser.waitForAngularEnabled(false);
         await Helpers.scrollToElement(await this.returnFilterTypeByName(filterName));
         await Buttons.clickButtonByElement(await this.returnFilterTypeByName(filterName));
-        await Buttons.clickButtonByElement(await this.returnFilterByName(filter));
-        await Buttons.clickButtonByElement(await this.returnFilterTypeByName(filterName));
         await browser.sleep(1000);
+        await Buttons.clickButtonByElement(await this.returnFilterByName(filter));
     }
 
     async checkFilter(filterName, filterNumber) {
+        await browser.waitForAngularEnabled(false);
         expect(await this.returnFilterTypeByName(filterName).getText()).to.contains(`(${filterNumber})`);
     }
 }

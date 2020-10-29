@@ -14,10 +14,12 @@ class BasketPage {
     }
 
     async checkoutSecurely () {
+        await browser.waitForAngularEnabled(false);
         await Links.clickLinkByElement(this.miniBasketCheckOutButton);
     }
 
     async checkoutNow() {
+        await browser.waitForAngularEnabled(false);
         await Buttons.clickButtonByElement(this.checkoutNowButton);
     }
 }

@@ -16,6 +16,6 @@ When(/^I go to payment page$/, {timeout: 30000}, async function() {
     await Basket.checkoutNow();
 });
 
-Then(/^I see payment methods and Place an order to pay button$/, {timeout: 30000}, async function() {
+Then(/^I am on the payment page$/, {timeout: 30000}, async function() {
      expect(await browser.getCurrentUrl()).to.contains(`Order/Payment`);
 });

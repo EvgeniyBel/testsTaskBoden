@@ -11,6 +11,7 @@ class SignInPage {
     }
 
     async logIn(username, password) {
+        await browser.waitForAngularEnabled(false);
         await Expectations.waitUntilIsVisible(this.passwordField);
         await Input.inputTextInField(this.userNameFields, username);
         await Input.inputTextInField(this.passwordField, password);

@@ -51,6 +51,7 @@ class MainPage {
         await browser.waitForAngularEnabled(false);
         await Buttons.clickButtonByElement(this.searchButton);
         await Input.inputTextInField(this.searchField, name);
+        await browser.sleep(1000);
         await Helpers.pressEnter();
     }
 
@@ -62,10 +63,11 @@ class MainPage {
     }
 
     async acceptCookies() {
+        await browser.waitForAngularEnabled(false);
         await Expectations.waitUntilIsVisible(this.oneTrustPolicy);
         await Expectations.waitUntilIsVisible(this.manageCokiesButton);
         await Expectations.waitUntilIsClickable(this.acceptCookiesButton);
-        await Buttons.clickButtonByElement(this.acceptCookiesButton);
+        await Buttons.clickElementByJs(this.acceptCookiesButton);
     }
 }
 exports.default = new MainPage();

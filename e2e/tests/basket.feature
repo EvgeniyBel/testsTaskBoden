@@ -11,4 +11,4 @@ Feature: add an item to the basket and go to the payment stage
     And I add item to basket
     And I open basket
     When I go to payment page
-    Then I see payment methods and Place an order to pay button
+    Then I am on the payment page

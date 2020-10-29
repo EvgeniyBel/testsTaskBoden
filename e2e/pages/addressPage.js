@@ -19,10 +19,12 @@ class AddressPage {
     }
 
     async goToEditAddressPage() {
+        await browser.waitForAngularEnabled(false);
         await Links.clickLinkByElement(this.editAddressButton);
     }
 
     async editAddressByPostcode(postcode) {
+        await browser.waitForAngularEnabled(false);
         await Helpers.scrollToElement(this.postcodeField);
         await Input.inputTextInField(this.postcodeField, postcode);
         await Button.clickButtonByElement(this.searchPostcodeButton);

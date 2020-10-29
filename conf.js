@@ -1,9 +1,10 @@
 
 exports.config = {
-    allScriptsTimeout: 30000,
+    allScriptsTimeout: 1800000,
     framework: 'custom',
     frameworkPath: require.resolve('protractor-cucumber-framework'),
     baseUrl: "https://www.boden.co.uk/",
+    getPageTimeout: 45000,
     directConnect: true,
 
     specs: [
@@ -31,11 +32,16 @@ exports.config = {
                 "--allow-running-insecure-content",
                 "--allow-cross-origin-auth-prompt",
                 'disable-infobars=true',
-                '--disable-popup-blocking'
+                '--disable-popup-blocking',
                 //"--headless",
             ],
             'prefs': {
                 'credentials_enable_service': false
+            },
+            localState: {
+                'browser': {
+                    'enabled_labs_experiments': ['cookies-without-same-site-must-be-secure@2']
+                }
             }
         },
     },
@@ -45,5 +51,8 @@ exports.config = {
             './e2e/**/*.steps.js',
         ],
         strict: true,
+        format: ["progress"],
+        monochrome: true,
+        plugin: "json"
     },
 };

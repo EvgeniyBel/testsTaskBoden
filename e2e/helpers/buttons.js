@@ -12,13 +12,19 @@ class Buttons {
     }
 
     async clickButtonByElement(webElement) {
-        await Expectations.waitUntilIsVisible(webElement);
-        await webElement.click();
+        try{
+            await Expectations.waitUntilIsVisible(webElement);
+            await webElement.click();
+        } catch (e) {
+            await Expectations.waitUntilIsVisible(webElement);
+            await this.clickElementByJs(webElement);
+        }
+
     }
 
     async clickElementByJs(webElement) {
-        await Expectations.waitUntilIsClickable(webElement);
-        await browser.executeScript('argument[0].click()', webElement);
+        await Expectations.waitUntilIsVisible(webElement);
+        await browser.executeScript('arguments[0].click()', webElement);
     }
 }
 
