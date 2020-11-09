@@ -1,0 +1,32 @@
+{
+  "name": "testsTaskBoden",
+  "version": "1.0.0",
+  "description": "The Test Task for Boden",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "update": "webdriver-manager update",
+    "test:all": "protractor conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EvgeniyBel/testsTaskBoden.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EvgeniyBel/testsTaskBoden/issues"
+  },
+  "homepage": "https://github.com/EvgeniyBel/testsTaskBoden#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-string": "^1.5.0",
+    "cucumber": "^6.0.5",
+    "gherkin": "^9.0.0",
+    "nodejs": "0.0.0",
+    "protractor": "^7.0.0",
+    "protractor-cucumber-framework": "^6.2.1"
+  },
+  "dependencies": {}
+}
